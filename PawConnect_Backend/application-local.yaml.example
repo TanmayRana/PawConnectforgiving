@@ -1,0 +1,13 @@
+# Template for offline/local development when internet is unavailable
+# Copy this file to 'application-local.yaml' in the same folder to override cloud Neon DB settings.
+# application-local.yaml is automatically loaded by Spring Boot if present and ignored by git.
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pawconnect
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update

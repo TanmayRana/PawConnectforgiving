@@ -1,0 +1,70 @@
+---
+description: PawConnect repository-wide UI and architecture rules
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# PawConnect
+
+Before coding, read `AGENTS.md` and `docs/PAWCONNECT_PROJECT_BLUEPRINT.md`.
+
+Use the existing design system and shared components first. Do not duplicate components.
+
+Architecture:
+- Next.js App Router + TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Lucide React
+- TanStack Query for server state
+- Zustand for small client/UI state
+- React Hook Form + Zod for forms
+- Server Components by default
+
+Layouts:
+- Public = top navbar + footer
+- Customer = top application navbar
+- Admin/Professional = sidebar + topbar
+
+Modal-first:
+- Login/register/forgot password are modal flows
+- CRUD forms should normally be Dialog/Drawer/Sheet
+- Do not create unnecessary form routes
+
+No Vendor:
+- no Vendor role
+- no vendor marketplace
+- no vendor dashboard
+- no vendor verification
+- no vendor fields in products
+
+Visual system:
+- background #FBFBFB
+- foreground #272727
+- muted #5A5A5A
+- accent #E78585
+- accent-soft #FFDADA
+- cream #FFF0D0
+- blue-soft #D0F3FF
+- blue-border #C4DEE8
+- surface #F1F1F1
+- Inter for the application
+- Just Another Hand only for decorative marketing accents
+
+Never hardcode theme values outside the centralized theme.
+
+Before adding a new component, search `src/components/`.
+
+Every data screen must support loading/error/empty states.
+
+Every new UI must be responsive and accessible.
+
+After meaningful changes run:
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm build
+```
+
+Do not mark a task complete while verification is failing.

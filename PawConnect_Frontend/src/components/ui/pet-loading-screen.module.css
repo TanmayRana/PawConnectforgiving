@@ -1,0 +1,285 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  overflow: hidden;
+  color: var(--foreground, #272727);
+  background:
+    radial-gradient(
+      circle at 50% 34%,
+      rgba(231, 133, 133, 0.16),
+      transparent 45%
+    ),
+    var(--background, #fbfbfb);
+}
+
+.fullScreen {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.inline {
+  width: 100%;
+  min-height: 260px;
+  border-radius: 20px;
+}
+
+.content {
+  width: min(100%, 470px);
+  text-align: center;
+}
+
+.scene {
+  position: relative;
+  display: flex;
+  height: 205px;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+  padding-bottom: 25px;
+}
+
+.animal {
+  z-index: 1;
+  display: grid;
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid var(--border, #e5e5e5);
+  border-radius: 28px;
+  background: var(--card, #ffffff);
+  box-shadow: 0 12px 28px rgba(231, 133, 133, 0.12);
+  font-size: 51px;
+  transform-origin: center bottom;
+  animation: petHop 1.15s ease-in-out infinite;
+}
+
+.dog {
+  background: var(--cream, #fff0d0);
+  border-color: var(--cream-border, #f3e5c5);
+  animation-delay: 0s;
+}
+
+.cat {
+  background: var(--blue-soft, #d0f3ff);
+  border-color: var(--blue-border, #c4dee8);
+  animation-delay: 0.18s;
+}
+
+.rabbit {
+  background: var(--primary-soft, #ffdada);
+  border-color: rgba(231, 133, 133, 0.25);
+  animation-delay: 0.36s;
+}
+
+.ground {
+  position: absolute;
+  right: 2%;
+  bottom: 13px;
+  left: 2%;
+  height: 13px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-soft, #ffdada),
+    var(--primary, #e78585),
+    var(--primary-soft, #ffdada),
+    transparent
+  );
+  opacity: 0.85;
+}
+
+.paw {
+  position: absolute;
+  z-index: 0;
+  color: var(--primary, #e78585);
+  font-size: 24px;
+  opacity: 0.55;
+  animation: pawFloat 2.6s ease-in-out infinite;
+}
+
+.pawOne {
+  top: 25px;
+  left: 7%;
+}
+
+.pawTwo {
+  top: 2px;
+  right: 14%;
+  animation-delay: 0.7s;
+}
+
+.pawThree {
+  top: 82px;
+  left: 26%;
+  font-size: 17px;
+  animation-delay: 1.2s;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  margin-top: 10px;
+  font-size: clamp(27px, 5vw, 36px);
+  font-weight: 800;
+  letter-spacing: -1.3px;
+}
+
+.brandPrimary {
+  color: var(--primary, #e78585);
+}
+
+.brandSecondary {
+  color: var(--foreground, #272727);
+}
+
+.brandPaw {
+  margin-left: 4px;
+  font-size: 23px;
+  color: var(--primary, #e78585);
+  animation: pawPulse 1.5s ease-in-out infinite;
+}
+
+.message {
+  margin: 12px auto 0;
+  color: var(--muted-foreground, #5a5a5a);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.progressTrack {
+  width: min(100%, 350px);
+  height: 8px;
+  margin: 24px auto 0;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--muted, #f1f1f1);
+}
+
+.progressBar {
+  width: 35%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--primary, #e78585), var(--primary-soft, #ffdada));
+  animation: loadingTravel 1.35s ease-in-out infinite;
+}
+
+.fadeIn {
+  animation: screenFadeIn 200ms ease-out forwards;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+@keyframes screenFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes petHop {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  45% {
+    transform: translateY(-22px) rotate(-4deg);
+  }
+  65% {
+    transform: translateY(-17px) rotate(4deg);
+  }
+}
+
+@keyframes pawFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-8deg);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(-15px) rotate(10deg);
+    opacity: 0.85;
+  }
+}
+
+@keyframes pawPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18) rotate(-10deg);
+  }
+}
+
+@keyframes loadingTravel {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(390%);
+  }
+}
+
+@media (max-width: 480px) {
+  .root {
+    padding: 20px;
+  }
+
+  .scene {
+    height: 175px;
+    gap: 8px;
+  }
+
+  .animal {
+    width: 75px;
+    height: 75px;
+    border-radius: 24px;
+    font-size: 43px;
+  }
+
+  .message {
+    max-width: 300px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeIn {
+    animation: none;
+    opacity: 1;
+  }
+
+  .animal,
+  .paw,
+  .brandPaw,
+  .progressBar {
+    animation: none !important;
+  }
+
+  .progressBar {
+    width: 65% !important;
+    transform: none !important;
+    margin-left: 17% !important;
+  }
+}
